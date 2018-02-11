@@ -18,8 +18,10 @@ namespace ClassLibrary2
         {
             IWebDriver driver = new FirefoxDriver(@"C:\");
             driver.Navigate().GoToUrl("http://javaguru.lv");
-            Thread.Sleep(5000);
-            driver.Close();
+            var element = driver.FindElement(By.XPath(".//span[text()='Курс Тестирования(QA)']"));
+            Assert.That(element.Displayed, "Element not displayed");
+            element.Click();
+
         }
 
     }
